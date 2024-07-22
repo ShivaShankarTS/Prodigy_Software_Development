@@ -1,0 +1,64 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Contact {
+    private String name;
+    private String phoneNumber;
+    private String email;
+
+    public Contact(String name, String phoneNumber, String email) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+}
+
+class ContactManager {
+    private ArrayList<Contact> contacts = new ArrayList<>();
+
+    public void addContact(Contact contact) {
+        contacts.add(contact);
+    }
+
+    public void viewContacts() {
+        for (Contact contact : contacts) {
+            System.out.println("Name: " + contact.getName() + ", Phone: " + contact.getPhoneNumber() + ", Email: " + contact.getEmail());
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ContactManager contactManager = new ContactManager();
+        Scanner scanner = new Scanner(System.in);
+
+        // Sample code to add a contact
+        System.out.println("Enter name:");
+        String name = scanner.nextLine();
+        System.out.println("Enter phone number:");
+        String phoneNumber = scanner.nextLine();
+        System.out.println("Enter email:");
+        String email = scanner.nextLine();
+
+        Contact newContact = new Contact(name, phoneNumber, email);
+        contactManager.addContact(newContact);
+
+        // Sample code to view all contacts
+        contactManager.viewContacts();
+
+        // Close the scanner
+        scanner.close();
+    }
+}
